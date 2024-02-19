@@ -8,10 +8,27 @@ components:
   name: content_panel
   layout_properties: {slot: default}
   components:
-  - name: label_1
-    properties: {text: hiiiii}
-    type: Label
-    layout_properties: {grid_position: 'INYSGK,HXKXKG'}
+  - name: label_ip_address
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'CNYRRV,QWXIBN'}
+  - name: label_subnet_mask
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'CKVUJX,GWSZOB'}
+  - name: button_1
+    properties: {text: button_1}
+    type: Button
+    layout_properties: {grid_position: 'OORYVN,YUTQUB'}
+    event_bindings: {click: button_1_click}
+  - name: text_box_ip_address
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'OTZDGV,WGOUOA'}
+  - name: text_box_subnet_mask
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'GSTEHN,OWLBUU'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
