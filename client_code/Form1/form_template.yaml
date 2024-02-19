@@ -7,6 +7,11 @@ components:
   properties: {}
   name: content_panel
   layout_properties: {slot: default}
+  components:
+  - name: label_1
+    properties: {text: hiiiii}
+    type: Label
+    layout_properties: {grid_position: 'INYSGK,HXKXKG'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
