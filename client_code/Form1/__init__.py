@@ -6,23 +6,40 @@ class Form1(Form1Template):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
+    def button_1_click(self, **event_args):
+      def subnet_calculation(self, ip_address, subnet_mask):
+        try:
+            # Tạo đối tượng IPv4Network từ địa chỉ IP và subnet mask
+            network = ipaddress.IPv4Network(f'{ip_address}/{subnet_mask}', strict=False)
 
-def main():
-    # Địa chỉ IP mạng gốc và mặt nạ mạng
-    network_address = '192.168.1.0'
-    subnet_mask = '255.255.255.0'  # Ví dụ: mặt nạ mạng /24
+            # Hiển thị thông tin về mạng và subnet mask trên giao diện
+            self.label_ip_address.text = f"Địa chỉ IP: {network.network_address}"
+            self.label_subnet_mask.text = f"Subnet Mask: {network.netmask}"
 
-    # Chuyển đổi địa chỉ IP và mặt nạ mạng thành đối tượng Network
-    network = ipaddress.IPv4Network(f'{network_address}/{subnet_mask}', strict=False)
+        except ValueError:
+            print("Địa chỉ IP hoặc subnet mask không hợp lệ.")
 
-    # In thông tin về mạng con
-    print(f'Mạng gốc: {network.network_address}')
-    print(f'Mặt nạ mạng: {network.netmask}')
-    print(f'Số lượng mạng con: {network.num_addresses}')
-    print(f'Số lượng host trong mỗi mạng con: {network.num_addresses - 2}')  # Trừ đi địa chỉ mạng và broadcast
-    print(f'Địa chỉ host đầu tiên: {network.network_address + 1}')
-    print(f'Địa chỉ host cuối cùng: {network.broadcast_address - 1}')
-    print(f'Địa chỉ broadcast: {network.broadcast_address}')
+def button_1_click(self, **event_args):
+        ip_address = self.text_box_ip_address.text
+        subnet_mask = self.text_box_subnet_mask.text
 
-if __name__ == '__main__':
-    main()
+        # Gọi hàm subnet_calculation để tính toán và hiển thị thông tin mạng con
+        result = self.subnet_calculation(ip_address, subnet_mask)
+
+    # Hiển thị kết quả trong textbox_result
+        self.textbox_result.text = result
+
+def subnet_calculation(self, ip_address, subnet_mask):
+    try:
+        # Tạo đối tượng IPv4Network từ địa chỉ IP và subnet mask
+        network = ipaddress.IPv4Network(f'{ip_address}/{subnet_mask}', strict=False)
+
+        # Trả về thông tin về mạng và subnet mask
+        return f"Địa chỉ IP: {network.network_address}, Subnet Mask: {network.netmask}"
+
+    except ValueError:
+        return "Địa chỉ IP hoặc subnet mask không hợp lệ."     
+
+
+
+
