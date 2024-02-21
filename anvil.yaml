@@ -2,6 +2,7 @@ allow_embedding: false
 package_name: Material_Design_1
 name: Material Design 1
 startup_form: Form1
+native_deps: {head_html: ''}
 runtime_options:
   version: 2
   client_version: '3'
