@@ -12,6 +12,10 @@ components:
     properties: {}
     type: TextBox
     layout_properties: {grid_position: 'CRLITA,IIYOPN'}
+  - name: label_1
+    properties: {font: ''}
+    type: Label
+    layout_properties: {grid_position: 'NTGDSF,NXVMJT'}
   - name: calculate_button
     properties: {text: 'Calculate
 
