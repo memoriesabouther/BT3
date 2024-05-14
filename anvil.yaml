@@ -1,6 +1,6 @@
 allow_embedding: false
-package_name: Material_Design_1
-name: Material Design 1
+package_name: BT3
+name: BT3
 startup_form: Form1
 native_deps: {head_html: ''}
 runtime_options:
@@ -8,6 +8,9 @@ runtime_options:
   client_version: '3'
   server_version: python3-sandbox
   server_spec: {base: python310-minimal}
+metadata: {description: 'Viết chương trình cho phép nhập vào n số nguyên. Sau đó thực
+    hiện sắp xếp dãy số nguyên đó theo thứ tự bằng 1 trong các thuật toán sắp xếp
+    đã học: Insertion Sort, Selection Sort, Bubble Sort, Merge Sort.'}
 services:
 - source: /runtime/services/tables.yml
   client_config: {}

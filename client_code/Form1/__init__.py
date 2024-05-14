@@ -1,29 +1,85 @@
 from ._anvil_designer import Form1Template
 from anvil import *
 import anvil.server
-import ipaddress
+
 class Form1(Form1Template):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
-    def subnet_calculation(self, ip_address, subnet_mask):
+        
+        
+
+    def insertion_sort(self, arr):
+        for i in range(1, len(arr)):
+            key = arr[i]
+            j = i - 1
+            while j >= 0 and key < arr[j]:
+                arr[j + 1] = arr[j]
+                j -= 1
+            arr[j + 1] = key
+        return arr
+
+    def selection_sort(self, arr):
+        for i in range(len(arr)):
+            min_idx = i
+            for j in range(i + 1, len(arr)):
+                if arr[j] < arr[min_idx]:
+                    min_idx = j
+            arr[i], arr[min_idx] = arr[min_idx], arr[i]
+        return arr
+
+    def bubble_sort(self, arr):
+        n = len(arr)
+        for i in range(n):
+            for j in range(0, n - i - 1):
+                if arr[j] > arr[j + 1]:
+                    arr[j], arr[j + 1] = arr[j + 1], arr[j]
+        return arr
+
+    def merge_sort(self, arr):
+        if len(arr) > 1:
+            mid = len(arr) // 2
+            L = arr[:mid]
+            R = arr[mid:]
+
+            self.merge_sort(L)
+            self.merge_sort(R)
+
+            i = j = k = 0
+
+            while i < len(L) and j < len(R):
+                if L[i] < R[j]:
+                    arr[k] = L[i]
+                    i += 1
+                else:
+                    arr[k] = R[j]
+                    j += 1
+                k += 1
+
+            while i < len(L):
+                arr[k] = L[i]
+                i += 1
+                k += 1
+
+            while j < len(R):
+                arr[k] = R[j]
+                j += 1
+                k += 1
+
+        return arr
+
+    def calculate_button_click(self, **event_args):
+        input_text = self.input_textbox.text
+        # Chuyển đổi chuỗi nhập vào thành một danh sách các số nguyên
         try:
-            # Tạo đối tượng IPv4Network từ địa chỉ IP và subnet mask
-         network = ipaddress.IPv4Network(f'{ip_address}/{subnet_mask}', strict=False)
-
-            # Trả về thông tin về mạng và subnet mask
-         return f"Địa chỉ IP: {network.network_address}, Subnet Mask: {network.netmask}"
-
+            numbers = list(map(int, input_text.split(',')))
         except ValueError:
-            return "Địa chỉ IP hoặc subnet mask không hợp lệ."
+            self.output_textbox.text = "Invalid input! Please enter a comma-separated list of integers."
+            return
 
-    def button_1_click(self, **event_args):
-      ip_address = self.text_box_ip_address.text
-      subnet_mask = self.text_box_subnet_mask.text
-  
-          # Gọi hàm subnet_calculation để tính toán và hiển thị thông tin mạng con
-      result = self.subnet_calculation(ip_address, subnet_mask)
-  
-          # Hiển thị kết quả trong textbox_result
-      self.textbox_result.text = result
+        # Sắp xếp danh sách sử dụng một thuật toán sắp xếp (ví dụ: Insertion Sort)
+        sorted_numbers = self.insertion_sort(numbers)
+
+        # Hiển thị kết quả
+        self.output_textbox.text = ', '.join(map(str, sorted_numbers))
